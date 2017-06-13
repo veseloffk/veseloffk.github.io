@@ -1,0 +1,223 @@
+@mixin adaptiveSquareDiv($side-length-percent)
+  position: relative
+  width: $side-length-percent
+  &:before
+    content: ''
+    display: block
+    padding-top: 100%
+@mixin adaptiveSquareDivInside
+  position: absolute
+  top: 0
+  left: 0
+  bottom: 0
+  right: 0
+$game-container-background: #bbada0
+body
+  background-color: #faf8ef
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif
+.container
+  color: #776E65
+  margin: 0 auto
+  .game-title
+    font-weight: bold
+    display: inline-block
+    span
+      display: block
+  .score
+    display: inline-block
+    float: right
+    background-color: #bbada0
+    text-align: center
+    font-weight: bold
+    .score-count
+      color: white
+
+.grid
+  background-color: $game-container-background
+.tile-wrapper
+  .tile
+    transition-property: top, right, bottom, left, background
+    transition-duration: .15s
+  .tile-2
+    color: #776E65
+    background: #eee4da
+  .tile-4
+    color: #776E65
+    background: #eee1c9
+  .tile-8
+    color: #f9f6f2
+    background: #f3b27a
+  .tile-16
+    color: #f9f6f2
+    background: #f69664
+  .tile-32
+    color: #f9f6f2
+    background: #f77c5f
+  .tile-64
+    color: #f9f6f2
+    background: #f75f3b
+  .tile-128
+    color: #f9f6f2
+    background: #edd073
+  .tile-256
+    color: #f9f6f2
+    background: #edcc62
+  .tile-512
+    color: #f9f6f2
+    background: #edc950
+  .tile-1024
+    color: #f9f6f2
+    background: #edc53f
+  .tile-2048
+    color: #f9f6f2
+    background: #edc22e
+
+
+@media (min-width: 1024px)
+  .container
+    width: 500px
+@media (max-width: 420px)
+  .game-title
+    font-size: 14vw
+    font-weight: bold
+    padding-left: 10px
+    padding-bottom: 20px
+    span
+      font-size: 3.5vw
+  .score
+    margin-top: 5px
+    padding: 4px 7px
+    font-size: 4vw
+    border-radius: 3px
+    .score-count
+      font-size: 5vw
+
+  .grid-wrapper
+    @include adaptiveSquareDiv(100%)
+    .grid
+      border-radius: 1%
+      @include adaptiveSquareDivInside
+      padding: 1.5%
+      .grid-cell
+        margin: 1.5%
+        width: 22%
+        height: 22%
+        background-color: rgba(238, 228, 218, 0.35)
+        float: left
+        border-radius: 4%
+    .tile-container
+      @include adaptiveSquareDivInside
+      padding: 1.5%
+      .tile-wrapper
+        width: 100%
+        height: 100%
+        position: relative
+        .tile
+          margin: 1.5%
+          width: 22%
+          height: 22%
+          position: absolute
+          border-radius: 4%
+          display: flex
+          flex-direction: column
+          justify-content: center
+          text-align: center
+          font-weight: bold
+        .tile-position-0-0
+          top: 0
+          left: 0
+        .tile-position-0-1
+          top: 25%
+          left: 0
+        .tile-position-0-2
+          top: 50%
+          left: 0
+        .tile-position-0-3
+          top: 75%
+          left: 0
+        .tile-position-1-0
+          top: 0
+          left: 25%
+        .tile-position-1-1
+          top: 25%
+          left: 25%
+        .tile-position-1-2
+          top: 50%
+          left: 25%
+        .tile-position-1-3
+          top: 75%
+          left: 25%
+        .tile-position-2-0
+          top: 0
+          left: 50%
+        .tile-position-2-1
+          top: 25%
+          left: 50%
+        .tile-position-2-2
+          top: 50%
+          left: 50%
+        .tile-position-2-3
+          top: 75%
+          left: 50%
+        .tile-position-3-0
+          top: 0
+          left: 75%
+        .tile-position-3-1
+          top: 25%
+          left: 75%
+        .tile-position-3-2
+          top: 50%
+          left: 75%
+        .tile-position-3-3
+          top: 75%
+          left: 75%
+        .tile-2
+          font-size: 10vw
+        .tile-4
+          font-size: 10vw
+        .tile-8
+          font-size: 10vw
+        .tile-16
+          font-size: 10vw
+        .tile-32
+          font-size: 10vw
+        .tile-64
+          font-size: 10vw
+        .tile-128
+          font-size: 9vw
+        .tile-256
+          font-size: 9vw
+        .tile-512
+          font-size: 9vw
+        .tile-1024
+          font-size: 8vw
+        .tile-2048
+          font-size: 8vw
+
+ 
+
+
+
+
+
+
+
+        
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

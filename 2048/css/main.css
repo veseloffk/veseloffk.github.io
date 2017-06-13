@@ -1,0 +1,372 @@
+body {
+  font-weight: bold;
+  background-color: #faf8ef;
+  font-family: "Clear Sans", "Helvetica Neue", Arial, sans-serif; }
+  body .container {
+    cursor: default;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    color: #776E65; }
+    body .container .game-title {
+      display: inline-block; }
+      body .container .game-title span {
+        display: block; }
+      body .container .game-title .new-game {
+        border-radius: 3px;
+        text-align: center;
+        display: block;
+        color: #f9f6f2;
+        background: #bbada0;
+        float: right; }
+    body .container .score-wrapper {
+      display: inline-block;
+      float: right; }
+      body .container .score-wrapper .score {
+        background-color: #bbada0;
+        text-align: center;
+        color: #eee4da; }
+        body .container .score-wrapper .score .score-count {
+          color: #f9f6f2; }
+      body .container .score-wrapper .move-score {
+        position: absolute; }
+    body .container .grid-wrapper {
+      position: relative;
+      width: 100%; }
+      body .container .grid-wrapper:before {
+        content: '';
+        display: block;
+        padding-top: 100%; }
+      body .container .grid-wrapper .grid {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        border-radius: 1%;
+        padding: 1.5%;
+        background-color: #bbada0; }
+        body .container .grid-wrapper .grid .grid-cell {
+          margin: 1.5%;
+          width: 22%;
+          height: 22%;
+          background: rgba(238, 228, 218, 0.35);
+          float: left;
+          border-radius: 4%; }
+      body .container .grid-wrapper .tile-container {
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        padding: 1.5%; }
+        body .container .grid-wrapper .tile-container .tile-wrapper {
+          width: 100%;
+          height: 100%;
+          position: relative; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile {
+            margin: 1.5%;
+            width: 22%;
+            height: 22%;
+            position: absolute;
+            border-radius: 4%;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            text-align: center;
+            transition-property: top, right, bottom, left, background;
+            transition-duration: .12s; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-0-0 {
+            top: 0;
+            left: 0; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-0-1 {
+            top: 25%;
+            left: 0; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-0-2 {
+            top: 50%;
+            left: 0; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-0-3 {
+            top: 75%;
+            left: 0; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-1-0 {
+            top: 0;
+            left: 25%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-1-1 {
+            top: 25%;
+            left: 25%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-1-2 {
+            top: 50%;
+            left: 25%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-1-3 {
+            top: 75%;
+            left: 25%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-2-0 {
+            top: 0;
+            left: 50%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-2-1 {
+            top: 25%;
+            left: 50%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-2-2 {
+            top: 50%;
+            left: 50%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-2-3 {
+            top: 75%;
+            left: 50%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-3-0 {
+            top: 0;
+            left: 75%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-3-1 {
+            top: 25%;
+            left: 75%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-3-2 {
+            top: 50%;
+            left: 75%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-position-3-3 {
+            top: 75%;
+            left: 75%; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-2 {
+            color: #776E65;
+            background: #eee4da; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-4 {
+            color: #776E65;
+            background: #eee1c9; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-8 {
+            color: #f9f6f2;
+            background: #f3b27a; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-16 {
+            color: #f9f6f2;
+            background: #f69664; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-32 {
+            color: #f9f6f2;
+            background: #f77c5f; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-64 {
+            color: #f9f6f2;
+            background: #f75f3b; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-128 {
+            color: #f9f6f2;
+            background: #edd073; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-256 {
+            color: #f9f6f2;
+            background: #edcc62; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-512 {
+            color: #f9f6f2;
+            background: #edc950; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-1024 {
+            color: #f9f6f2;
+            background: #edc53f; }
+          body .container .grid-wrapper .tile-container .tile-wrapper .tile-2048 {
+            color: #f9f6f2;
+            background: #edc22e; }
+      body .container .grid-wrapper .game-over-wrapper {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(238, 228, 218, 0.5); }
+        body .container .grid-wrapper .game-over-wrapper .game-over {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
+          body .container .grid-wrapper .game-over-wrapper .game-over a {
+            border-radius: 3px;
+            text-align: center;
+            display: block;
+            color: #f9f6f2;
+            background: #bbada0; }
+      body .container .grid-wrapper .restart-game-wrapper {
+        display: none;
+        position: absolute;
+        top: 0;
+        left: 0;
+        bottom: 0;
+        right: 0;
+        background: rgba(238, 228, 218, 0.5); }
+        body .container .grid-wrapper .restart-game-wrapper .restart-game {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%); }
+          body .container .grid-wrapper .restart-game-wrapper .restart-game a {
+            border-radius: 3px;
+            text-align: center;
+            display: block;
+            color: #f9f6f2;
+            background: #bbada0;
+            float: right; }
+            body .container .grid-wrapper .restart-game-wrapper .restart-game a:first-child {
+              float: left; }
+
+@media (max-width: 420px) {
+  .game-title {
+    font-size: 14vw;
+    padding-left: 10px;
+    margin-bottom: 20px; }
+    .game-title span {
+      font-size: 3.5vw; }
+    .game-title .new-game {
+      line-height: 13vw;
+      padding: 0 6px;
+      height: 13vw;
+      margin-top: 5px;
+      font-size: 5vw; }
+  .score {
+    margin-top: 5px;
+    padding: 4px 7px;
+    font-size: 4vw;
+    border-radius: 3px; }
+    .score .score-count {
+      font-size: 5vw; }
+  .move-score {
+    margin-top: 1.5%;
+    font-size: 4.3vw; }
+  .tile-2 {
+    font-size: 10vw; }
+  .tile-4 {
+    font-size: 10vw; }
+  .tile-8 {
+    font-size: 10vw; }
+  .tile-16 {
+    font-size: 10vw; }
+  .tile-32 {
+    font-size: 10vw; }
+  .tile-64 {
+    font-size: 10vw; }
+  .tile-128 {
+    font-size: 9vw; }
+  .tile-256 {
+    font-size: 9vw; }
+  .tile-512 {
+    font-size: 9vw; }
+  .tile-1024 {
+    font-size: 8vw; }
+  .tile-2048 {
+    font-size: 8vw; }
+  .game-over {
+    font-size: 6vw; }
+    .game-over a {
+      padding: 5px;
+      margin-top: 7px; }
+  .restart-game {
+    font-size: 6vw; }
+    .restart-game a {
+      padding: 5px;
+      margin-top: 7px; } }
+
+@media (min-width: 421px) and (max-width: 1024px) {
+  .container {
+    width: 70%;
+    margin: 0 auto; }
+    .container .game-title {
+      font-size: 10vw;
+      margin-bottom: 20px; }
+      .container .game-title span {
+        font-size: 2.5vw; }
+      .container .game-title .new-game {
+        font-size: 4.1vw;
+        margin-top: 15px;
+        padding: 10px;
+        margin-right: -30px; }
+    .container .score {
+      font-size: 2.5vw;
+      padding: 3px 5px;
+      border-right: 3px;
+      margin-top: 15px; }
+      .container .score .score-count {
+        font-size: 3.3vw; }
+    .container .move-score {
+      font-size: 3vw; }
+    .container .tile-2 {
+      font-size: 7.5vw; }
+    .container .tile-4 {
+      font-size: 7.5vw; }
+    .container .tile-8 {
+      font-size: 7.5vw; }
+    .container .tile-16 {
+      font-size: 7.5vw; }
+    .container .tile-32 {
+      font-size: 7.5vw; }
+    .container .tile-64 {
+      font-size: 7.5vw; }
+    .container .tile-128 {
+      font-size: 6.5vw; }
+    .container .tile-256 {
+      font-size: 6.5vw; }
+    .container .tile-512 {
+      font-size: 6.5vw; }
+    .container .tile-1024 {
+      font-size: 5.5vw; }
+    .container .tile-2048 {
+      font-size: 5.5vw; }
+    .container .game-over {
+      font-size: 5vw; }
+      .container .game-over a {
+        padding: 8px;
+        margin-top: 7px; }
+    .container .restart-game {
+      font-size: 5vw; }
+      .container .restart-game a {
+        padding: 8px;
+        margin-top: 7px; } }
+
+@media (min-width: 1024px) {
+  .container {
+    width: 500px;
+    margin: 0 auto;
+    padding-top: 30px; }
+    .container .game-title {
+      font-size: 80px;
+      margin-bottom: 50px; }
+      .container .game-title span {
+        font-size: 17px; }
+      .container .game-title .new-game {
+        margin-top: 13px;
+        font-size: 17px;
+        height: 50px;
+        line-height: 50px;
+        padding: 0 7px;
+        margin-right: -70px; }
+    .container .score {
+      padding: 3px 5px;
+      margin-top: 13px;
+      border-radius: 3px;
+      font-size: 17px; }
+      .container .score .score-count {
+        font-size: 17px; }
+    .container .move-score {
+      margin-top: 3px;
+      font-size: 20px; }
+  .tile-2 {
+    font-size: 50px; }
+  .tile-4 {
+    font-size: 50px; }
+  .tile-8 {
+    font-size: 50px; }
+  .tile-16 {
+    font-size: 50px; }
+  .tile-32 {
+    font-size: 50px; }
+  .tile-64 {
+    font-size: 50px; }
+  .tile-128 {
+    font-size: 45px; }
+  .tile-256 {
+    font-size: 45px; }
+  .tile-512 {
+    font-size: 45px; }
+  .tile-1024 {
+    font-size: 40px; }
+  .tile-2048 {
+    font-size: 40px; }
+  .game-over {
+    font-size: 20px; }
+    .game-over a {
+      padding: 10px;
+      margin-top: 15px; }
+  .restart-game {
+    font-size: 20px; }
+    .restart-game a {
+      padding: 10px;
+      margin-top: 15px; } }
