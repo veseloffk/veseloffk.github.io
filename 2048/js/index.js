@@ -22,19 +22,19 @@ function GameManager(render, input){
     this.inpute.newGame = this.render.newGame.bind(this);
 
     this.start();
-};
+}
 
 GameManager.prototype.start = function(){
     this.buildEmptyGameMap();
     this.addNewField();
     this.addNewField();
-}
+};
 
 GameManager.prototype.restart = function(){
     this.render.restart();
     this.score = 0;
     this.start();
-}
+};
 
 GameManager.prototype.buildEmptyGameMap = function(){
     for(var i=0; i<4; i++){
@@ -43,7 +43,7 @@ GameManager.prototype.buildEmptyGameMap = function(){
             this.gameMap[i][j] = null;
         }
     }
-}
+};
 
 GameManager.prototype.randomEmptyFieldPosition = function(){
     var emptyFields = [];
@@ -55,14 +55,14 @@ GameManager.prototype.randomEmptyFieldPosition = function(){
         }
     }
     return emptyFields[Math.floor(Math.random()*emptyFields.length)];
-}
+};
 
 
 GameManager.prototype.addNewField = function(){
     var tile = new Field(this.randomEmptyFieldPosition());
     this.gameMap[tile.location.x][tile.location.y] = tile;
     this.render.addNewSpeck(tile.location, tile.value);
-}
+};
 
 GameManager.prototype.move = function(vector){
     var vectorMap = {
@@ -70,7 +70,7 @@ GameManager.prototype.move = function(vector){
         left: { x:-1, y:0 },
         up: { x:0, y:-1 },
         down: { x:0, y:1 }
-    }
+    };
 
     var moved = false;
     var moveScore = 0;
@@ -160,7 +160,7 @@ GameManager.prototype.move = function(vector){
     if(!this.availableMove()){
         this.render.gameOver();
     }
-}
+};
 
 GameManager.prototype.findFinalLocation = function(field, vector){
     var next = {};
@@ -182,7 +182,7 @@ GameManager.prototype.findFinalLocation = function(field, vector){
     }
     if(field.location.x === next.x && field.location.y === next.y){ return false; }
     else { return next; }
-}
+};
 
 GameManager.prototype.actuate = function(oldPosition, newPosition){
     if(this.gameMap[newPosition.x][newPosition.y] === null){
@@ -193,7 +193,7 @@ GameManager.prototype.actuate = function(oldPosition, newPosition){
         this.gameMap[newPosition.x][newPosition.y] =  new Field(newPosition, this.gameMap[oldPosition.x][oldPosition.y].value*2, true);
     }
     this.gameMap[oldPosition.x][oldPosition.y]= null;
-}
+};
 
 GameManager.prototype.availableMove = function(){
     if(!this.randomEmptyFieldPosition()){
@@ -210,7 +210,7 @@ GameManager.prototype.availableMove = function(){
         return false;
     }
     else { return true; }
-}
+};
 
 function HTMLRender(){
     this.gameField = document.getElementsByClassName('tile-wrapper')[0];
@@ -223,9 +223,9 @@ HTMLRender.prototype.addNewSpeck = function(location, value){
     newField.textContent = value;
     newField.classList.add('tile');
     newField.classList.add('tile-position-'+location.x+'-'+location.y);
-    newField.classList.add('tile-'+value)
+    newField.classList.add('tile-'+value);
     this.gameField.appendChild(newField);
-}
+};
 
 HTMLRender.prototype.moveSpeck = function(startLocation, finishLocation){
     var oldSpeck = this.gameField.getElementsByClassName('tile-position-'+finishLocation.x+'-'+finishLocation.y)[0];
@@ -235,7 +235,7 @@ HTMLRender.prototype.moveSpeck = function(startLocation, finishLocation){
     var Speck = this.gameField.getElementsByClassName('tile-position-'+startLocation.x+'-'+startLocation.y)[0];
     Speck.classList.remove('tile-position-'+startLocation.x+'-'+startLocation.y);
     Speck.classList.add('tile-position-'+finishLocation.x+'-'+finishLocation.y)
-}
+};
 
 HTMLRender.prototype.sumSpeck = function(location){
     var Speck = this.gameField.getElementsByClassName('tile-position-'+location.x+'-'+location.y)[0];
@@ -243,11 +243,11 @@ HTMLRender.prototype.sumSpeck = function(location){
     Speck.textContent *= 2;
     Speck.classList.remove('tile-'+value);
     Speck.classList.add('tile-'+value*2);
-}
+};
 
 HTMLRender.prototype.updateScore = function(score){
     this.gameScore.textContent = score;
-}
+};
 
 HTMLRender.prototype.addMoveScore = function(score){
     var self = this;
@@ -255,17 +255,17 @@ HTMLRender.prototype.addMoveScore = function(score){
     div.textContent = '+' + score;
     div.classList.add('move-score');
     this.scoreWrapper.appendChild(div);
-}
+};
 
 HTMLRender.prototype.removeMoveScore =  function(){
     if(this.scoreWrapper.getElementsByClassName('move-score')[0]){
         this.scoreWrapper.removeChild(this.scoreWrapper.getElementsByClassName('move-score')[0]);
     }
-}
+};
 
 HTMLRender.prototype.gameOver = function(){
     document.getElementsByClassName('game-over-wrapper')[0].style.display = "block";
-}
+};
 
 HTMLRender.prototype.restart = function(){
     this.updateScore(0);
@@ -274,11 +274,11 @@ HTMLRender.prototype.restart = function(){
     while(this.gameField.lastChild){
         this.gameField.removeChild(this.gameField.lastChild);
     }
-}
+};
 
 HTMLRender.prototype.newGame = function (){
     document.getElementsByClassName('restart-game-wrapper')[0].style.display = "block";
-}
+};
 
 
 function InputManager(){
@@ -292,32 +292,32 @@ InputManager.prototype.listen = function(){
         39: "right",
         40: "down",
         37: "left"
-    }
+    };
 
     var touchstartX = 0;
     var touchstartY = 0;
     var touchendX = 0;
     var touchendY = 0;
 
-    document.body.addEventListener('touchmove', function(event){
+   /* document.body.addEventListener('touchmove', function(event){
         event.preventDefault();
-    }) //возможно отключает скрол на mobile
+    })*/ //возможно отключает скрол на mobile
 
-    document.getElementsByClassName('restart')[0].addEventListener('click', function(event){
+    document.getElementsByClassName('restart')[0].addEventListener('click', function(){
         self.restart();
-    })
+    });
 
-    document.getElementsByClassName('restart')[1].addEventListener('click', function(event){
+    document.getElementsByClassName('restart')[1].addEventListener('click', function(){
         self.restart();
-    })
+    });
 
-    document.getElementsByClassName('new-game')[0].addEventListener('click', function(event){
+    document.getElementsByClassName('new-game')[0].addEventListener('click', function(){
         self.newGame();
-    })
+    });
 
-    document.getElementsByClassName('no-restart')[0].addEventListener('click', function(event){
+    document.getElementsByClassName('no-restart')[0].addEventListener('click', function(){
         document.getElementsByClassName('restart-game-wrapper')[0].style.display = "none";
-    })
+    });
 
     document.addEventListener("keyup", function(event){
         if(keyMap[event.keyCode]){
@@ -326,7 +326,7 @@ InputManager.prototype.listen = function(){
         if(event.keyCode === 27){
             document.getElementsByClassName('restart-game-wrapper')[0].style.display = "none";
         }
-    })
+    });
 
     document.addEventListener('touchstart', function(event) {
         touchstartX = event.changedTouches[0].clientX;
@@ -353,5 +353,5 @@ InputManager.prototype.listen = function(){
             self.move("down");
         }
     }
-}
+};
 
