@@ -201,7 +201,8 @@ body {
 
 @media (max-width: 420px) {
   body {
-    position: fixed; }
+    position: fixed;
+    width: 95%; }
     body .game-title {
       font-size: 14vw;
       padding-left: 10px;
