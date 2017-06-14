@@ -328,12 +328,12 @@ InputManager.prototype.listen = function(){
         }
     })
 
-    document.getElementsByClassName('tile-wrapper')[0].addEventListener('touchstart', function(event) {
+    document.addEventListener('touchstart', function(event) {
         touchstartX = event.changedTouches[0].clientX;
         touchstartY = event.changedTouches[0].clientY;
     });
 
-    document.getElementsByClassName('tile-wrapper')[0].addEventListener('touchend', function(event) {
+    document.addEventListener('touchend', function(event) {
         touchendX = event.changedTouches[0].clientX;
         touchendY = event.changedTouches[0].clientY ;
         swipe();
