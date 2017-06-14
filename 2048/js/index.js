@@ -299,6 +299,10 @@ InputManager.prototype.listen = function(){
     var touchendX = 0;
     var touchendY = 0;
 
+   /* document.body.addEventListener('touchmove', function(event){
+        event.preventDefault();
+    })*/ //возможно отключает скрол на mobile
+
     document.getElementsByClassName('restart')[0].addEventListener('click', function(event){
         self.restart();
     })
